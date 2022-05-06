@@ -19,7 +19,7 @@ private Long id;
 
 @NotBlank ( message = "O título do tema é obrigatório")
 @Size( min = 5, max = 100 ,message = " O texto deve ter no mínimo 5 e no máximo 100" )
-private String resumo;
+private String nome;
 
 
 @NotBlank ( message = "A descrição é obrigatória!")
@@ -37,13 +37,13 @@ public void setId(Long id) {
 }
 
 
-public String getResumo() {
-	return resumo;
+public String getNome() {
+	return nome;
 }
 
 
-public void setResumo(String resumo) {
-	this.resumo = resumo;
+public void setNome(String nome) {
+	this.nome = nome;
 }
 
 
