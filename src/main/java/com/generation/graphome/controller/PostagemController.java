@@ -1,6 +1,6 @@
 package com.generation.graphome.controller;
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +26,7 @@ import com.generation.graphome.repository.PostagemRepository;
 import com.generation.graphome.repository.TemaRepository;
 
 @RestController
-@RequestMapping ("/Postagem")
+@RequestMapping ("/postagem")
 @CrossOrigin (origins = "*", allowedHeaders = "*" )
 public class PostagemController {
 	
@@ -53,12 +53,14 @@ public class PostagemController {
 		return ResponseEntity.ok(postagemRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 	
-	@GetMapping("/data/{d1}")
-    public ResponseEntity<List<Postagem>> getByListaPostagem(@PathVariable LocalDateTime d1){
-        List<LocalDateTime> listaData = List.of(d1);
-        return ResponseEntity.ok(postagemRepository.findByDataIn(listaData));
-    }
-	
+	@GetMapping("/data_inicial/{inicio}/data_final/{fim}")
+	public ResponseEntity<List<Postagem>> getByDataIntervalo(@PathVariable String inicio, @PathVariable String fim){
+		
+		LocalDate data_start = LocalDate.parse(inicio, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		LocalDate data_end = LocalDate.parse(fim, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		
+		return ResponseEntity.ok(postagemRepository.findByDataBetween(data_start,data_end));
+	}
 	@PostMapping
 	public ResponseEntity <Postagem> postPostagem (@Valid @RequestBody Postagem postagem){
 		
