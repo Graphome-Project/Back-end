@@ -1,6 +1,6 @@
 package com.generation.graphome.repository;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,8 +13,10 @@ import com.generation.graphome.model.Postagem;
 public interface PostagemRepository extends JpaRepository <Postagem, Long>{
 	
 	public List <Postagem> findAllByTituloContainingIgnoreCase(@Param("titulo")String titulo);
-	public List<Postagem> findByDataIn(List<LocalDateTime> data);
-
+	
+	
+	 public List <Postagem> findByDataBetween(LocalDate data_start, LocalDate data_end);
+	
 	
 	
 
