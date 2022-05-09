@@ -1,12 +1,18 @@
 package com.generation.graphome.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_temas")
@@ -25,6 +31,11 @@ private String nome;
 @NotBlank ( message = "A descrição é obrigatória!")
 @Size( min = 5, max = 500 ,message = " O texto deve ter no mínimo 5 e no máximo 500" )
 private String descricao;
+
+
+@OneToMany(mappedBy = "tema", cascade = CascadeType.REMOVE)
+@JsonIgnoreProperties("tema")
+private List<Postagem> postagem;
 
 
 public Long getId() {
@@ -54,6 +65,16 @@ public String getDescricao() {
 
 public void setDescricao(String descricao) {
 	this.descricao = descricao;
+}
+
+
+public List<Postagem> getPostagem() {
+	return postagem;
+}
+
+
+public void setPostagem(List<Postagem> postagem) {
+	this.postagem = postagem;
 }
 
 
