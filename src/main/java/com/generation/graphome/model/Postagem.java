@@ -1,6 +1,6 @@
 package com.generation.graphome.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -35,8 +36,9 @@ public class Postagem {
     
     private String midia;
     
+    @JsonFormat(pattern="yyyy-MM-dd")
     @UpdateTimestamp
-    private LocalDateTime data;
+	private LocalDate data;
     
     private int curtir;
    
@@ -84,11 +86,11 @@ public class Postagem {
 		this.midia = midia;
 	}
 
-	public LocalDateTime getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(LocalDateTime data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
