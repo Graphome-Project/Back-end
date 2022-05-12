@@ -25,7 +25,7 @@ public class Usuario {
 	private String nome;
 	
 	@Email
-	private String user;
+	private String usuario;
 	
 	@NotBlank(message="A senha é obrigatória")
 	@Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres")
@@ -61,12 +61,13 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getUser() {
-		return user;
+	
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
