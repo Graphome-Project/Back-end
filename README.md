@@ -4,11 +4,11 @@ Back-end do projeto
 - [x] Criar a Camada Repository e Camada Controller de Temas
 - [x] Criar a Camada Model, Respository, Controller da Tabela de Postagens
 - [x] Criar a Camada Model de Usuario
-- [ ] Editar o Pom.xml
-- [ ] Criar a Camada de Security
-- [ ] Criar a Camada de Service de Usuario
-- [ ] Criar a Camada de Repository para a interface de Usuario
-- [ ] Criar duas Classes Controller para Usuario
+- [x] Editar o Pom.xml
+- [x] Criar a Camada de Security
+- [x] Criar a Camada de Service de Usuario
+- [x] Criar a Camada de Repository para a interface de Usuario
+- [x] Criar duas Classes Controller para Usuario
 
 
 <br>
