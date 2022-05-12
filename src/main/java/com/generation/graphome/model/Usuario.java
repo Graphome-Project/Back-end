@@ -42,7 +42,7 @@ public class Usuario {
 	private String bio;
 	
 	@Column(name="data_nascimento")
-	@JsonFormat(pattern="yyyy-mm-dd")
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@NotNull(message="Data de Nascimento Obrigatoria")
 	private LocalDate dataNascimento;
 	
