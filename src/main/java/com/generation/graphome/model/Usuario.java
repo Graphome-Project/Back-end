@@ -1,6 +1,9 @@
 package com.generation.graphome.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,8 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -25,7 +30,7 @@ public class Usuario {
 	private String nome;
 	
 	@Email
-	private String user;
+	private String usuario;
 	
 	@NotBlank(message="A senha é obrigatória")
 	@Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres")
@@ -36,6 +41,11 @@ public class Usuario {
 	
 	private String bio;
 	
+	@Column(name="data_nascimento")
+	@JsonFormat(pattern="yyyy-MM-dd")
+	@NotNull(message="Data de Nascimento Obrigatoria")
+	private LocalDate dataNascimento;
+	
 	@NotBlank(message = "O tipo de pessoa deve ser colocado")
 	private String tipo;
 	
@@ -45,8 +55,18 @@ public class Usuario {
 
 
 //getters and setters
+	
+	
 	public Long getId() {
 		return id;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	public void setId(Long id) {
@@ -61,12 +81,13 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getUser() {
-		return user;
+	
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
