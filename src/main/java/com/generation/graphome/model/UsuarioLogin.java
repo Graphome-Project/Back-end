@@ -1,6 +1,6 @@
 package com.generation.graphome.model;
 
-
+import java.time.LocalDate;
 
 public class UsuarioLogin {
 	
@@ -10,7 +10,7 @@ private Long id;
 	private String nome;
 	
 	
-	private String user;
+	private String usuario;
 	
 	
 	private String senha;
@@ -20,12 +20,22 @@ private Long id;
 	
 	private String bio;
 	
+	private LocalDate dataNascimento;
+	
 	private String tipo;
 	
 	private String token;
 
 	public Long getId() {
 		return id;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	public void setId(Long id) {
@@ -40,12 +50,12 @@ private Long id;
 		this.nome = nome;
 	}
 
-	public String getUser() {
-		return user;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
