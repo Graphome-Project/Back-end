@@ -2,6 +2,7 @@ package com.generation.graphome.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,8 +41,8 @@ public class Postagem {
     @UpdateTimestamp
 	private LocalDate data;
     
-    private int curtir;
-   
+    @Column(columnDefinition = "integer default 0")
+	private int curtir;
     
 //relacionamentos
     @ManyToOne
@@ -52,8 +53,7 @@ public class Postagem {
     @JsonIgnoreProperties("postagem")
     private Usuario usuario;
 
- 
-//getters and setters
+  //getters and setters
 	public Long getId() {
 		return id;
 	}
@@ -118,9 +118,8 @@ public class Postagem {
 		this.usuario = usuario;
 	}
 
-	
-    
-    
-    
+ 
+
+
 
 }
