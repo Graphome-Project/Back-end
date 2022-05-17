@@ -24,6 +24,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.generation.graphome.model.Postagem;
 import com.generation.graphome.repository.PostagemRepository;
 import com.generation.graphome.repository.TemaRepository;
+import com.generation.graphome.service.PostagemService;
 
 @RestController
 @RequestMapping ("/postagem")
@@ -35,6 +36,9 @@ public class PostagemController {
 	
 	@Autowired
 	private TemaRepository temaRepository;
+	
+	@Autowired
+	private PostagemService postagemService;
 	
 	@GetMapping
 	public ResponseEntity <List<Postagem>> getAll (){
@@ -95,7 +99,14 @@ public class PostagemController {
 		
 	}	
 	
+	@PutMapping("/curtir/{id}")
+	public ResponseEntity<Postagem> curtirProdutoId (@PathVariable Long id){
+		
+		return postagemService.curtir(id)
+			.map(resposta-> ResponseEntity.ok(resposta))
+			.orElse(ResponseEntity.badRequest().build());
 	
+	}
 	
 	
 	
