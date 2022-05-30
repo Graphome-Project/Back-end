@@ -1,6 +1,7 @@
 package com.generation.graphome.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -53,14 +54,23 @@ public class Usuario {
 	@NotBlank(message = "O tipo de pessoa deve ser colocado")
 	private String tipo;
 	
+	
 //relacionamento
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
-
+	private List<Postagem> postagem;
 
 //getters and setters
 	
 	
+	public List<Postagem> getPostagem() {
+		return postagem;
+	}
+
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
+	}
+
 	public Long getId() {
 		return id;
 	}
